@@ -13,14 +13,9 @@ import {
   onMounted,
 } from "vue";
 import { useRouter } from "vue-router";
-import { useConfigStore } from "../store/config";
 import { storeToRefs } from "pinia";
-const store = useConfigStore();
-const {theme}  = storeToRefs(store);
-const {layout}  = storeToRefs(store);
-store.$subscribe((mutation,state)=>{
-  change_theme(state.theme)
-})
+
+
 
 const router = useRouter();
 onBeforeMount(() => {});

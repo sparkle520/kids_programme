@@ -47,7 +47,7 @@ const current_text = ref("");
 let position = ref(0);
 watch(position, (newVal, oldVal) => {
   let item = document.querySelector(".item");
-  item.style.transform = "translateX(" + position.value + "vw)";
+  item.style.transform = "translateX(" + position.value + "px)";
   const rect_list = document.querySelectorAll(".rect");
   if (newVal === 0) {
     add_rect_active(rect_list, 0);
@@ -68,7 +68,7 @@ watch(position, (newVal, oldVal) => {
     remove_rect_active(rect_list, 3);
   }
 });
-const width = -50
+const width = -1080
 
 
 </script>
@@ -94,16 +94,16 @@ const width = -50
 </template>
 <style lang="scss" scoped>
 #home_carousel_main {
-  width: 50vw;
-  height: 30vh;
+  width: 1080px;
+  height: 40vh;
   overflow: hidden;
-  // box-shadow: #e4b198 15px 16px 5px, #98cde4 -15px -16px 5px;
+  box-shadow: rgba(94, 97, 95, 0.064) 0 0 10px;
   border-radius: 10px;
 
   &::after {
     content: "";
     position: absolute;
-    width: 50vw;
+    width: 1080px;
     height: inherit;
     right: 0;
     bottom: 0;
@@ -127,7 +127,7 @@ const width = -50
       margin: 10px 0;
     }
     .rect_active {
-      width: 32px;
+      width: 38px;
       height: 1vh;
       // border: #0064fb51 1px solid;
       background: #fff4f4;
@@ -137,14 +137,14 @@ const width = -50
   }
 
   .content {
-    width: 50vw;
+    width: 1080px;
     height: inherit;
     .item {
       height: inherit;
-      width: 160vw;
+      width: 4320px;
       transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
       .img_box {
-        width: 50vw;
+        width: 1080px;
         height: inherit;
         border-radius: 10px;
 
