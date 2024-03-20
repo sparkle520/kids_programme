@@ -18,6 +18,55 @@ const routes = [
             screenFull: true,
         }
     },
+    {
+        path: '/paper/details',
+        component: () => import("/src/views/PaperDetails.vue"),
+        meta: {
+            isRouterAuth: false,
+            screenFull: true,
+        }
+    },
+    {
+        path: '/paper/exam',
+        component: () => import("/src/views/PaperExam.vue"),
+        meta: {
+            isRouterAuth: false,
+            screenFull: true,
+        }
+    },
+    {
+        path: '/paper/bank',
+        component: () => import("/src/views/QuestionBank.vue"),
+        meta: {
+            isRouterAuth: false,
+            screenFull: true,
+        }
+    },
+    {
+        path: '/login',
+        component: () => import("/src/views/Login.vue"),
+        meta: {
+            isRouterAuth: false,
+            screenFull: true,
+        }
+    },
+    {
+        path: '/user',
+        component: () => import("/src/views/UserInfo.vue"),
+        meta: {
+            isRouterAuth: false,
+            screenFull: true,
+        },
+        children: [
+            {
+            path:'info',
+            name:"info",
+            component: () => import("/src/views/UserDetails.vue"),
+        },
+         
+        ]
+ 
+    },
    
     
    

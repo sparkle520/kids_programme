@@ -102,7 +102,7 @@ const page_handle = (current) => {
 </template>
 <style lang="scss" scoped>
 $page_item_active_color: var(--page_item_active_color, #ffff);
-$page_item_active_bg: var(--page_item_active_bg, #5aae76);
+$page_item_active_bg: var(--page_item_active_bg, #ff8033);
 $page_item_color: var(--page_item_color, #525454);
 $page_item_bg: var(--page_item_bg, #ffff);
 $page_item_box_shadow: var(--page_item_box_shadow, #dcdcdc49);

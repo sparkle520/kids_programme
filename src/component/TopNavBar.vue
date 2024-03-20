@@ -64,6 +64,12 @@ const nav_list = [
     e_name:"paper",
     path: "/paper",
   },
+  {
+    index: 2,
+    name: "我的",
+    e_name:"login",
+    path: "/login",
+  },
  
  
   
@@ -180,11 +186,11 @@ const link_to = (path) => {
   </div>
 </template>
 <style lang="scss" scoped>
-$nav_bg_color: var(--nav_bg_color, #f3f3f3);
+$nav_bg_color: var(--nav_bg_color, #ffff);
 $nav_fixed_shadow: var(--nav_fixed_shadow, #8e8e8e30);
 $nav_item_color: var(--nav_item_color, #5e6d78);
-$nav_item_active_color: var(--nav_item_active_color, #5cbd7c);
-$nav_item_hover_color: var(--nav_item_hover_color, #5cbd7c);
+$nav_item_active_color: var(--nav_item_active_color, #ff8033);
+$nav_item_hover_color: var(--nav_item_hover_color, #ff8033);
 
 .nav_fixed {
   background: $nav_bg_color;
@@ -310,44 +316,11 @@ $nav_item_hover_color: var(--nav_item_hover_color, #5cbd7c);
 
         }
       }
-      &::after{
-        content: '播放本地音频';
-        position: absolute;
-        bottom: -20px;
-        opacity: 0;
-        background: #ffff;
-          left: 50%;
-          transform: translateX(-50%) ;
-          width: 120%;
-          box-shadow: #3031361a 0 0 10px;
-          font-size: 11px;
-          border-radius: 15px;
-          color: #5e6d78;
-          padding: 8px 8px;
-          transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-      img{
-        width: 58px;
-        height: 58px;
-        margin: auto 0;
-        border-radius: 50%;
-        transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-        box-shadow: rgba(17, 34, 51, 0.189) 0 0 10px;
-        &:hover {
-        box-shadow: rgba(3, 27, 50, 0.763) 0 0 2px;
-
-      }
-      }
+     
+     
      
 
-      .svg_1 {
-        &:hover {
-        }
-      }
-      .svg_2 {
-        &:hover {
-        }
-      }
+      
     }
   }
 }

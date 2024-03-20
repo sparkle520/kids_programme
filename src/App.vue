@@ -13,6 +13,7 @@ let current_side_view = true;
 onMounted(() => {
   // emitter.emit('new_side_view', {current_side_view:current_side_view})
   document.addEventListener("click", click_handle)
+  document.documentElement.style.setProperty("--el-color-primary", `#ff8033`)
 });
 const click_handle = (e) => {
 
@@ -212,7 +213,6 @@ const music_handle = (status) => {
     <TopNavBar @music_change="music_handle" class="nav"></TopNavBar>
     <div v-if="!$route.meta.screenFull" class="park"></div>
     <router-view :key="$route.fullPath" class="router_view"></router-view>
-    <MusicPlayer class="music_player absolute"></MusicPlayer>
   </div>
 </template>
 
@@ -221,9 +221,10 @@ $bg_color: var(--bg_color, #fdfbfb);
 
 #main {
   background: $bg_color;
+
   width: 100vw;
   .nav {
-    z-index: 10000000000;
+    z-index: 100000;
     transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .park {
@@ -235,16 +236,7 @@ $bg_color: var(--bg_color, #fdfbfb);
   }
   .router_view {
   }
-  .music_player {
-    width: 400px;
-    right: 0;
-    top: 100px;
-    height: 150px;
-    z-index: 1000000000;
-    position: fixed;
-    transform: translateX(100%);
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
+  
 }
 
 </style>

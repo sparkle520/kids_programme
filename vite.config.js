@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base:'/TinyFlowers/',
+  base:'/wlzs/',
   build:{
     outDir:'docs'
   },

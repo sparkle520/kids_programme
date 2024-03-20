@@ -102,7 +102,7 @@ const cur_paper_list = ref([
     ],
   },
   {
-    name: "2023年Python一级真题",
+    name: "2023年Python一级真题sssssssssssssssssssssssssssss我afasfafafjiaiowfjassafasfasfsafasfasfasfasfaw",
     id: 1,
     tag_list: [
       { name: "2023" },
@@ -179,26 +179,36 @@ const page_data = ref({
 });
 const page_handle = () => {};
 const foot_nav = ref([
-  {name:"校企合作",},
-  {name:"会员价格",},
-  {name:"帮助中心",},
-  {name:"关于我们",},
-  {name:"联系我们",},
-  {name:"隐私协议",},
-  {name:"免责声明",},
-])
+  { name: "校企合作" },
+  { name: "会员价格" },
+  { name: "帮助中心" },
+  { name: "关于我们" },
+  { name: "联系我们" },
+  { name: "隐私协议" },
+  { name: "免责声明" },
+]);
+const options = ref([
+  { name: "全部" },
+  { name: "2023" },
+  { name: "2022" },
+  { name: "2021" },
+  { name: "2020" },
+]);
+const search_text = ref("");
+const value = ref("");
 </script>
 <template>
   <div id="paper_main">
     <div
       class="paper_top_box relative flex flex_direction_column align_items_center justify_content_center"
     >
-      <h3>试卷中心</h3>
+      <h3>试题中心</h3>
       <span>历年考试真题</span>
     </div>
     <div class="paper_container relative flex flex_direction_row">
       <div class="paper_left_box com_box flex flex_direction_column">
         <h3 class="relative">科目导航</h3>
+
         <ul class="subject_nav_box flex flex_direction_row">
           <li
             :key="item"
@@ -216,66 +226,83 @@ const foot_nav = ref([
       </div>
       <div class="paper_right_box com_box flex flex_direction_column">
         <div class="subject_level_box flex flex_direction_row">
-          <span>科目等级：</span>
-          <ul class="option_ul_box flex flex_direction_row">
-            <li
-              :key="item"
-              v-for="item in cur_subject_level_list"
-              :class="item.id == 1 ? 'option_li_active_item' : 'option_li_item'"
-              class="flex align_items_center justify_content_center"
+          <div class="flex flex_direction_row justify_content_center">
+            <span>科目等级：</span>
+            <el-select
+              v-model="value"
+              placeholder="选择等级"
+              style="width: 240px"
             >
-              <router-link to="" class="option_li_link">{{
-                item.name
-              }}</router-link>
-            </li>
-          </ul>
-        </div>
-        <div class="subject_year_box flex flex_direction_row">
-          <span>年份选择：</span>
-          <ul class="option_ul_box flex flex_direction_row">
-            <li
-              :key="item"
-              v-for="item in cur_subject_year_list"
-              :class="item.id == 1 ? 'option_li_active_item' : 'option_li_item'"
-              class="flex align_items_center justify_content_center"
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.name"
+                :value="item.value"
+                :disabled="item.disabled"
+              />
+            </el-select>
+          </div>
+          <div class="flex flex_direction_row justify_content_center">
+            <span>试题类型：</span>
+            <el-select
+              v-model="value"
+              placeholder="类型不限"
+              style="width: 240px"
             >
-              <router-link to="" class="option_li_link">{{
-                item.name
-              }}</router-link>
-            </li>
-          </ul>
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              />
+            </el-select>
+          </div>
+          <div class="flex flex_direction_row justify_content_center">
+            <span>知识点：</span>
+            <el-select
+              v-model="value"
+              placeholder="选择知识点"
+              style="width: 240px"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              />
+            </el-select>
+          </div>
         </div>
-        <ul class="text_paper_ul_box flex flex_direction_row">
+        <div
+          class="subject_level_box flex flex_direction_row align_items_center"
+        >
+          关键字搜索：
+          <el-input
+            v-model="search_text"
+            style="width: 240px"
+            placeholder="在此键入关键字搜索"
+          />
+          <el-button type="primary" class="search_btn">搜索</el-button>
+        </div>
+
+        <ul class="text_paper_ul_box flex flex_direction_column">
           <li
             :key="item"
             v-for="item in cur_paper_list"
-            class="text_paper_li_item flex flex_direction_column relative"
+            class="text_paper_li_item flex relative"
           >
-            <img
-              src="https://pic.imgdb.cn/item/65b3c498871b83018a856ea6.png"
-              alt=""
-            />
-            <div class="paper_bottom_box flex flex_direction_column">
+            <div
+              class="paper_bottom_box relative flex flex_direction_row align_items_center justify_content_space_between"
+            >
               <router-link class="paper_name" to="">{{
                 item.name
               }}</router-link>
-              <div class="btn_box flex justify_content_space_between">
-                <button class="btn">
-                  <router-link class="btn_link" to="">试卷阅览</router-link>
-                </button>
-                <button class="btn">
-                  <router-link class="btn_link" to="">开始考试</router-link>
-                </button>
-              </div>
-              <ul class="tag_ul_box flex flex_direction_row">
-                <li
-                  :key="item2"
-                  v-for="item2 in item.tag_list"
-                  class="tag_li_item"
-                >
-                  #{{ item2.name }}
-                </li>
-              </ul>
+
+              <button class="btn">
+                <router-link class="btn_link" to="">问答题</router-link>
+              </button>
             </div>
           </li>
         </ul>
@@ -288,7 +315,9 @@ const foot_nav = ref([
         </Pagination>
       </div>
     </div>
-    <div class="paper_foot relative flex flex_direction_column align_items_center">
+    <div
+      class="paper_foot relative flex flex_direction_column align_items_center"
+    >
       <div class="paper_foot_container flex flex_direction_row">
         <router-link
           :key="item"
@@ -317,8 +346,18 @@ const foot_nav = ref([
     z-index: 0;
     background: url("https://pic.imgdb.cn/item/65f38f9f9f345e8d03ad1fa8.png")
       repeat;
-
   }
+  .el-input {
+    --el-input-focus-border-color: #ff8033;
+  }
+
+  .el-select {
+    --el-select-input-focus-border-color: #ff8033;
+    .el-select-dropdown__item.selected {
+      color: #ff8033;
+    }
+  }
+
   .paper_top_box {
     width: 100vw;
     margin-top: 70px;
@@ -362,17 +401,18 @@ const foot_nav = ref([
         margin: 0;
         padding-bottom: 8px;
         border-bottom: #ff8033 2px solid;
-        &::after{
-            content: '';
-            position: absolute;
-            width: 5px;
-            left: -10px;
-            top: 40%;
-            transform: translateY(-50%);
-            height: 90%;
-            background: #ff8033;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 5px;
+          left: -10px;
+          top: 40%;
+          transform: translateY(-50%);
+          height: 90%;
+          background: #ff8033;
         }
       }
+
       .subject_nav_box {
         list-style: none;
         padding: 0;
@@ -420,6 +460,15 @@ const foot_nav = ref([
     .paper_right_box {
       width: 868px; //780
       gap: 16px;
+      .search_btn {
+        width: 120px;
+        background: #ff8033;
+        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        border: none;
+        &:hover {
+          background: #fc9c61;
+        }
+      }
       .option_ul_box {
         margin: 0;
         gap: 16px;
@@ -459,7 +508,9 @@ const foot_nav = ref([
         }
       }
       .subject_level_box {
-        gap: 32px;
+        gap: 16px;
+        width: calc(100% - 32px);
+        padding: 0 16px;
         span {
           flex-shrink: 0;
           transform: translateY(4px);
@@ -476,64 +527,61 @@ const foot_nav = ref([
         margin: 0;
         padding: 0;
         list-style: none;
-        gap: 16px;
+        gap: 0px;
         flex-wrap: wrap;
         width: 100%;
         .text_paper_li_item {
-          width: calc((100% - 32px) / 3);
-          height: 350px;
+          width: 100%;
+          height: 50px;
           border-radius: 5px;
-          box-shadow: 0 0 1px #ff8033, 0 0 10px #5254541d;
-          img {
+          &::after {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-top-right-radius: 5px;
-            border-top-left-radius: 5px;
+            height: 1px;
+            background: #d2d2d2;
+            bottom: -1px;
+            content: "";
+            position: absolute;
           }
           .paper_bottom_box {
-            width: calc(100% - 16px);
-            height: calc(100% - 236px);
+            width: calc(100%);
             padding: 8px;
+
             .paper_name {
               text-decoration: none;
               color: #777c7c;
-              width: 100%;
-              height: 40px;
-
+              width: 80%;
+              height: 20px;
               display: -webkit-box;
-              -webkit-line-clamp: 2;
+              -webkit-line-clamp: 1;
               -webkit-box-orient: vertical;
               overflow: hidden;
               &:hover {
                 color: #ff8033;
               }
             }
-            .btn_box {
-              margin-top: auto;
-              width: 100%;
-              .btn {
-                border: none;
-                background: #ff8033;
-                width: 40%;
-                height: 30px;
-                font-size: 14px;
-                font-weight: 900;
-                border-radius: 5px;
-                box-shadow: #0f120f24 0 0 10px;
-                transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            .btn {
+              border: none;
+              background: #ff8033;
+              width: 10%;
+              height: 30px;
+              font-size: 14px;
+              font-weight: 900;
+              border-radius: 5px;
+              box-shadow: #0f120f24 0 0 10px;
+              transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              color: #fff;
+              .btn_link {
                 color: #fff;
+                text-decoration: none;
+              }
+              &:hover {
                 .btn_link {
-                  color: #fff;
-                  text-decoration: none;
                 }
-                &:hover {
-                  .btn_link {
-                  }
-                  background: #e0a538;
-                }
+                background: #e0a538;
               }
             }
+
             .tag_ul_box {
               margin: 0;
               padding: 0;
@@ -549,26 +597,24 @@ const foot_nav = ref([
       }
     }
   }
-  .paper_foot{
-    background:#262727 ;
+  .paper_foot {
+    background: #262727;
     margin-top: 16px;
     z-index: 1;
 
     color: #fff;
     width: 100vw;
     min-height: 150px;
-    .paper_foot_container{
+    .paper_foot_container {
       width: 1016px;
       padding: 32px 32px;
       flex-wrap: wrap;
       gap: 16px;
-      .foot_nav{
+      .foot_nav {
         text-decoration: none;
-      color: #d2d2d2;
-      width: 242px;
-      
+        color: #d2d2d2;
+        width: 242px;
       }
-     
     }
   }
 }

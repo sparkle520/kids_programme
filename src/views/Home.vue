@@ -379,7 +379,7 @@ const foot_nav = ref([
           
           height: 5px;
           border-radius: 15px;
-          background: #a5e3ba;
+          background: #ff8033;
           bottom: 0;
           opacity: 0;
           left: 0;
@@ -388,7 +388,7 @@ const foot_nav = ref([
         }
         &:hover {
 
-          background:linear-gradient(-45deg,#f8f8f8,#e4faeb);
+          background:linear-gradient(-45deg,#f8f8f8,#efc0a3);
           color: #757171;
           &::after {
             transform: scaleX(1);
@@ -407,14 +407,14 @@ const foot_nav = ref([
         width: calc((100% - 60px) / 4);
         transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         height: 50px;
-        background: #5cbd7c;
+        background: #ff8033;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.126);
         border-radius: 1000px;
         color: #ffffff;
         text-decoration: none;
         &:hover{
           box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-          background: #a5e3ba;
+          background: rgb(254, 167, 136);
 
         }
       }
